@@ -22,14 +22,18 @@ public class OrderRepository {
 
     public void saveOrder(Order order){
         // your code here
-        orderMap.put(order.getId(), order);
+        if (order != null && order.getId() != null) {
+            orderMap.put(order.getId(), order);
+        }
         notAssignOrders.add(order.getId());
     }
 
     public void savePartner(String partnerId){
         // your code here
-        DeliveryPartner partner = new DeliveryPartner(partnerId);
-        partnerMap.put(partnerId,partner);
+        if (partnerId != null) {
+            DeliveryPartner deliveryPartner = new DeliveryPartner(partnerId);
+            partnerMap.put(partnerId, deliveryPartner);
+        }
 
         // create a new partner with given partnerId and save it
     }
